@@ -1,8 +1,6 @@
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Calculator {
     private final ArrayList<String> operations;
@@ -11,19 +9,26 @@ public class Calculator {
         this.operations = new ArrayList<String>(Arrays.asList("+", "-", "*", "/"));
     }
 
+
+    private double resolveExpression(String operator, List<String> factors){
+        if (operator.equals("+")){
+            return (double) Integer.parseInt(factors.get(0)) + Integer.parseInt(factors.get(1));
+        }
+        return -1.1;
+    }
+
     public double evaluateTwoNumbersExpression(String expression) throws Exception {
         String[] splittedExpression = expression.split(" ");
         String operation = splittedExpression[1];
+        List<String> factors = new ArrayList<>();
+        factors.add(splittedExpression[0]);
+        factors.add(splittedExpression[2]);
 
         if (!operations.contains(operation)){
             throw new Exception("Invalid Expression");
         }
 
-        ScriptEngine engine = new ScriptEngineManager(null).getEngineByName("js");
-
-        Object result = engine.eval(expression);
-
-        return (double) result;
+        return this.resolveExpression(operation, factors);
     }
 
     public static void main(String[] args) {
