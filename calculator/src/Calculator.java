@@ -14,11 +14,24 @@ public class Calculator {
         if (operator.equals("+")){
             return (double) Integer.parseInt(factors.get(0)) + Integer.parseInt(factors.get(1));
         }
-        return -1.1;
+
+        if (operator.equals("-")){
+            return (double) Integer.parseInt(factors.get(0)) - Integer.parseInt(factors.get(1));
+        }
+
+        if (operator.equals("/")){
+            return (double) Integer.parseInt(factors.get(0)) / Integer.parseInt(factors.get(1));
+        }
+
+        if (operator.equals("*")){
+            return (double) Integer.parseInt(factors.get(0)) * Integer.parseInt(factors.get(1));
+        }
+        
+        return -1.1;    
     }
 
     public double evaluateTwoNumbersExpression(String expression) throws Exception {
-        String[] splittedExpression = expression.split(" ");
+        String[] splittedExpression = expression.trim().split("(?!^)");
         String operation = splittedExpression[1];
         List<String> factors = new ArrayList<>();
         factors.add(splittedExpression[0]);
