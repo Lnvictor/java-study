@@ -31,7 +31,7 @@ public class Calculator {
     }
 
     public double evaluateTwoNumbersExpression(String expression) throws Exception {
-        String[] splittedExpression = expression.trim().split("(?!^)");
+        String[] splittedExpression = expression.replaceAll(" ", "").split("(?!^)");
         String operation = splittedExpression[1];
         List<String> factors = new ArrayList<>();
         factors.add(splittedExpression[0]);
