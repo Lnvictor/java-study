@@ -1,21 +1,25 @@
 package mammels;
 
 import java.util.*;
+import commons.Animal;
+import amphibians.Sapo;
 
 public class Main {
-    public static List<Mammel> animals = new ArrayList<Mammel>();
+    public static List<Animal> animals = new ArrayList<>();
 
     public static void  constructZoo(){
         Lion simba = new Lion("Simba", 10);
         Giraffe eduard = new Giraffe("Eduard", 15);
-        Tiger mirella = new Tiger("Mirrela", 5);
+        Tiger mirella = new Tiger("Mirella", 5);
+        Sapo joseph = new Sapo("Joseph", 2);
 
         animals.add(simba);
         animals.add(eduard);
         animals.add(mirella);
+		animals.add(joseph);
     }
 
-    private static Mammel findAnimal(int option) {
+    private static Animal findAnimal(int option) {
         return animals.get(option - 1);
     }
 
@@ -26,11 +30,12 @@ public class Main {
         System.out.println("1- Simba (Lion)");
         System.out.println("2- Eduard (Giraffe)");
         System.out.println("3- Mirella (Tiger)");
+        System.out.println("4- Joseph (Sapo)");
 
         Scanner scanner = new Scanner(System.in);
         int option = Integer.parseInt(scanner.nextLine());
 
-        Mammel mammel = findAnimal(option);
-        System.out.println(mammel.noise());
+        Animal animal = findAnimal(option);
+        System.out.println(animal.noise());
     }
 }

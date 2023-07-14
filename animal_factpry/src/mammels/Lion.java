@@ -7,7 +7,7 @@ public class Lion extends Mammel {
 
     public void move(String location){
         if (location == "Brazil"){
-            throw new IllegalArgumentException("Its not allowed lions in brazil");
+            throw new IllegalArgumentException("Its not allowed lions in Brazil");
         }
     }
 }
